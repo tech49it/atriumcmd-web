@@ -16,11 +16,11 @@ const modules = [
 
 export function Vision() {
   return (
-    <section id="vision" className="dark-section scroll-mt-24 py-24 sm:py-28">
+    <section id="roadmap" className="dark-section scroll-mt-24 py-24 sm:py-28">
       <div className="container">
         <SectionHeading
           dark
-          eyebrow="Vision"
+          eyebrow="Roadmap"
           title={
             <>
               One module today.{" "}

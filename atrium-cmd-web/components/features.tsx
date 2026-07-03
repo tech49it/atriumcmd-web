@@ -22,7 +22,7 @@ interface Feature {
 const features: Feature[] = [
   {
     icon: Sparkles,
-    title: "Morning Brief",
+    title: "Daily prioritization",
     body: "One prioritized view each morning — today's calendar, the emails that need a decision, the clients waiting, the deadlines hiding in attachments.",
     className: "sm:col-span-2",
     children: (
@@ -69,7 +69,7 @@ export function Features() {
     <section id="features" className="scroll-mt-24 border-t border-border/60 py-24 sm:py-28">
       <div className="container">
         <SectionHeading
-          eyebrow="Features"
+          eyebrow="Core capabilities"
           title={
             <>
               Everything an attorney needs to see first —{" "}

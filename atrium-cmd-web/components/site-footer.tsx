@@ -1,22 +1,31 @@
+import Link from "next/link";
+
 import { AtriumMark } from "@/components/logo";
 
 const columns = [
   {
     heading: "Product",
     links: [
-      { label: "Features", href: "#features" },
-      { label: "Security", href: "#security" },
-      { label: "Integrations", href: "#integrations" },
-      { label: "Vision", href: "#vision" },
+      { label: "Solutions", href: "/solutions" },
+      { label: "Legal AI", href: "/legal-ai" },
+      { label: "Workflow Automation", href: "/workflow-automation" },
+      { label: "Security", href: "/#security" },
     ],
   },
   {
     heading: "Company",
     links: [
-      { label: "Request a demo", href: "#demo" },
+      { label: "About", href: "/about" },
+      { label: "Case studies", href: "/#case-studies" },
+      { label: "Contact", href: "/contact" },
+      { label: "Request a demo", href: "/contact" },
+    ],
+  },
+  {
+    heading: "Legal",
+    links: [
       { label: "Privacy", href: "#" },
       { label: "Terms", href: "#" },
-      { label: "Contact", href: "#demo" },
     ],
   },
 ];
@@ -25,16 +34,22 @@ export function SiteFooter() {
   return (
     <footer className="dark-section border-t border-zinc-800">
       <div className="container py-16">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr]">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
           <div>
             <span className="inline-flex items-center gap-2.5 text-white">
               <AtriumMark />
               <span className="text-[17px] font-semibold tracking-tight">Atrium CMD</span>
             </span>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-zinc-400">
-              The AI Operations Platform for modern law firms. One intelligent
-              workspace — every morning, every matter.
+              The AI Command Center for Modern Law Firms. AI assists. Attorneys
+              decide.
             </p>
+            <a
+              href="mailto:hello@atriumcmd.com"
+              className="mt-4 inline-block text-sm text-zinc-400 transition-colors hover:text-white"
+            >
+              hello@atriumcmd.com
+            </a>
           </div>
 
           {columns.map((col) => (
@@ -45,12 +60,12 @@ export function SiteFooter() {
               <ul className="mt-4 space-y-2.5">
                 {col.links.map((link) => (
                   <li key={link.label}>
-                    <a
+                    <Link
                       href={link.href}
                       className="text-sm text-zinc-400 transition-colors hover:text-white"
                     >
                       {link.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>

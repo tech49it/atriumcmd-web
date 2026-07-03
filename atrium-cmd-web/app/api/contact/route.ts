@@ -2,28 +2,31 @@ import { NextResponse } from "next/server";
 
 export const runtime = "edge";
 
-interface DemoPayload {
+interface ContactPayload {
   name?: string;
-  firm?: string;
+  company?: string;
   email?: string;
+  role?: string;
   message?: string;
 }
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function POST(request: Request) {
-  let data: DemoPayload;
+  let data: ContactPayload;
   try {
-    data = (await request.json()) as DemoPayload;
+    data = (await request.json()) as ContactPayload;
   } catch {
     return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
   }
 
   const name = data.name?.trim();
-  const firm = data.firm?.trim();
+  const company = data.company?.trim();
   const email = data.email?.trim();
+  const role = data.role?.trim();
+  const message = data.message?.trim();
 
-  if (!name || !firm || !email) {
+  if (!name || !company || !email) {
     return NextResponse.json(
       { error: "Name, firm, and email are required." },
       { status: 422 }
@@ -35,9 +38,9 @@ export async function POST(request: Request) {
 
   // TODO: wire to your CRM / email provider (Resend, HubSpot, Slack webhook…).
   // Read the destination from an environment variable so nothing is hard-coded:
-  //   const hook = process.env.DEMO_WEBHOOK_URL;
+  //   const hook = process.env.CONTACT_WEBHOOK_URL;
   //   if (hook) await fetch(hook, { method: "POST", body: JSON.stringify(data) });
-  console.log("[demo request]", { name, firm, email });
+  console.log("[contact request]", { name, company, email, role, message });
 
   return NextResponse.json({ ok: true }, { status: 200 });
 }

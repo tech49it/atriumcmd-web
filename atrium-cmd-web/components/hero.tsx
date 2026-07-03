@@ -2,9 +2,9 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, ShieldCheck } from "lucide-react";
+import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
-import { BriefMockup } from "@/components/brief-mockup";
 
 export function Hero() {
   const reduce = useReducedMotion();
@@ -15,7 +15,7 @@ export function Hero() {
   });
 
   return (
-    <section id="top" className="relative overflow-hidden pt-32 sm:pt-40">
+    <section id="top" className="relative overflow-hidden pb-16 pt-32 sm:pb-20 sm:pt-40">
       {/* ambient background */}
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-grid mask-fade-b opacity-70" />
@@ -25,7 +25,7 @@ export function Hero() {
       <div className="container flex flex-col items-center text-center">
         <motion.a
           {...rise(0)}
-          href="#vision"
+          href="#roadmap"
           className="mb-7 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-[12.5px] text-muted-foreground shadow-sm transition-colors hover:text-foreground"
         >
           <span className="font-mono text-[10px] uppercase tracking-[0.14em]">
@@ -40,7 +40,7 @@ export function Hero() {
           {...rise(0.06)}
           className="max-w-4xl text-balance text-5xl font-semibold leading-[1.02] tracking-[-0.03em] sm:text-[68px]"
         >
-          The AI Operations Platform for{" "}
+          The AI Command Center for{" "}
           <span className="font-serif font-normal italic tracking-normal">
             modern law firms.
           </span>
@@ -57,9 +57,9 @@ export function Hero() {
 
         <motion.div {...rise(0.22)} className="mt-9 flex flex-wrap items-center justify-center gap-3">
           <Button asChild size="lg">
-            <a href="#demo">
+            <Link href="/contact">
               Request a demo <ArrowRight className="size-4" />
-            </a>
+            </Link>
           </Button>
           <Button asChild size="lg" variant="outline">
             <a href="#features">See how it works</a>
@@ -74,19 +74,6 @@ export function Hero() {
           Read-only by design · No client data used to train AI
         </motion.p>
       </div>
-
-      {/* product mockup */}
-      <motion.div
-        initial={{ opacity: 0, y: reduce ? 0 : 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9, delay: 0.32, ease: [0.16, 1, 0.3, 1] }}
-        className="container mt-16 sm:mt-20"
-      >
-        <div className="relative mx-auto max-w-4xl">
-          <div className="pointer-events-none absolute -inset-x-10 -top-8 bottom-0 -z-10 bg-grid mask-fade-b opacity-40" />
-          <BriefMockup />
-        </div>
-      </motion.div>
     </section>
   );
 }
